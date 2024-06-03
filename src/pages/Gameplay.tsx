@@ -47,7 +47,7 @@ const Gameplay = () => {
 
     const pushScore = async (sc:number) => {
         try {
-            const response = await useAxios.post('/scores', {score:sc, timeTaken, flipsCount:moves})
+            await useAxios.post('/scores', {score:sc, timeTaken, flipsCount:moves})
         } catch (error) {
             console.log(error)   
         }

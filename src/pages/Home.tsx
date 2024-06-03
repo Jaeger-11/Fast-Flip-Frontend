@@ -32,7 +32,7 @@ const Home:React.FC = () => {
         </section>
 
         <section>
-            <h1 className='jersey text-center'>SELECT CATEGORY</h1>
+            <h1 className='jersey text-center'>FASTFLIP</h1>
 
             <section className='text-center w-max mx-auto flex flex-col gap-4 cursor-pointer my-4'>
                 <p onClick={() => selectCategory()}  className='uppercase p-3 bg-black text-lightBg font-semibold rounded-md transition-all hover:scale-105 border-2 border-black'>PLAY GAME</p>
