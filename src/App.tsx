@@ -22,7 +22,7 @@ function App() {
         {/* <Route path='/' element={<Home/>} /> */}
         <Route path='/landing' element={<Landing/>} />
         <Route path='/about' element={<About/>} />
-        <Route path='/leaerboard' element={<Leaderboard/>}/>
+        <Route path='/leaderboard' element={<Leaderboard/>}/>
         <Route path='/gameplay' element={<Protected>
           <Gameplay/>
         </Protected>}/>

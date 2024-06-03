@@ -6,7 +6,7 @@ import useAxios from "../hooks/useAxios";
 const Authentication: React.FC<AuthComponentProps> = ({setShowAuth}) => {
 
   const navigate = useNavigate();
-  const [ newAccount, setNewAccount ] = useState<Boolean>(true);
+  const [ newAccount, setNewAccount ] = useState<Boolean>(false);
   const [ authDetails, setAuthDetails ] = useState<AuthUser>({username:"", email:"", password:""})
   
   const handleInput = ({target}: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ const Authentication: React.FC<AuthComponentProps> = ({setShowAuth}) => {
     window.localStorage.clear()
     try {
       const response = await useAxios.post('/auth/signup/', authDetails);
-      window.localStorage.setItem('Fast-flip-user', JSON.stringify(response.data))
+      window.localStorage.setItem('fast-flip-user', JSON.stringify(response.data))
       navigate('/')
     } catch (error) {
       console.log(error)
@@ -76,7 +76,7 @@ const Authentication: React.FC<AuthComponentProps> = ({setShowAuth}) => {
 
                 <p className="text-gray-500 text-sm text-right"> 
                 { newAccount ? 'Already a player? ' : 'No account yet? '}
-                <span className="text-highlight underline font-bold transition-all text-black cursor-pointer" 
+                <span className="text-blueLagoon underline font-bold transition-all hover:text-black cursor-pointer" 
                 onClick={switchAuthenticationType}
                 >
                 { newAccount ? 'Login' : 'Create Account'}

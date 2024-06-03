@@ -38,9 +38,7 @@ const Result: React.FC<details> = (data) => {
                     </div>
                 </section>
 
-                <p className='text-center my-2'>Your top score - <span className='font-semibold text-black'>900</span></p>
-                <div className=''>
-                    {/* <button className="border font-semibold p-2 w-max">Home</button> */}
+                <div className='mt-4'>
                     <button onClick={playAgain} className='mx-auto w-max jersey text-2xl bg-black text-white'> Play Again </button>
                 </div>
             </article>
