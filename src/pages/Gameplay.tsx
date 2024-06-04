@@ -118,18 +118,18 @@ const Gameplay = () => {
     // score=baseScore−(timeFactor×timeTaken)−(flipFactor×numberOfFlips)
 
   return (
-    <section className="flex flex-col gap-2 h-svh w-full container mx-auto">
-        <section className="flex justify-between items-center text-lg">
-            <div className="flex gap-4 items-center">
-                <p>Moves: <span>{moves}</span></p>
-                <p>Match: <span>{match}</span>/{cards.length / 2}</p>
-                <p>Mismatch: <span>{mismatch}</span> </p>
-                <p>Time Count: <span>{timeTaken}</span> </p>
+    <section className="flex flex-col h-svh w-full container mx-auto">
+        <section className="flex justify-between items-center md:text-lg text-sm p-2">
+            <div className="flex gap-2 md:gap-4 items-center">
+                <p>Moves: <span className="font-semibold">{moves}</span></p>
+                <p>Match: <span className="font-semibold">{match}</span>/{cards.length / 2}</p>
+                <p>Mismatch: <span className="font-semibold">{mismatch}</span> </p>
+                <p>Time Count: <span className="font-semibold">{timeTaken}</span> </p>
             </div>
-            <p onClick={quitGame} className="cursor-pointer">Quit</p>
+            <p onClick={quitGame} className="cursor-pointer font-bold">Quit</p>
         </section>
 
-        <section className="grid grid-cols-4 grid-rows-4 flex-1 gap-0.5 mb-2">
+        <section className="grid grid-cols-4 grid-rows-4 flex-1 gap-[1px] sm:gap-0.5 md:mb-2">
             {cards.map((i, index) => {
                 return (<div key={index} onClick={() => handleCardClick(index)} className={`${i.isFlipped ? 'flipped' : 'bg-blueLagoon'} card flex justify-center relative overflow-hidden items-center text-lightBg`}>
                     <img className={`${i.isFlipped ? 'opacity-100' : 'opacity-0'} transition-all w-[100%] h-[100%] object-center object-cover absolute top-0 left-0`} src={i.imageUrl} alt={i.name} />

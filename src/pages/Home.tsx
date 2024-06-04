@@ -19,7 +19,7 @@ const Home:React.FC = () => {
     }
 
   return (
-    <div className='container mx-auto py-10 flex flex-col gap-6 h-svh justify-between'>
+    <div className='container mx-auto py-10 px-4 flex flex-col gap-6 h-svh justify-between'>
         <section className='flex justify-between items-center text-lg'>
             <p onClick={() => setShowStats(true)} className='cursor-pointer font-semibold'>Your Stats</p>
             <div className='flex gap-2 items-center'>
