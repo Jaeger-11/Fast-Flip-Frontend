@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const useAxios = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://fast-flip-backend.vercel.app/',
     headers:{
         "content-type": "application/json"
     }
