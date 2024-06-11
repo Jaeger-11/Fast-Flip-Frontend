@@ -7,7 +7,8 @@ const Authentication: React.FC<AuthComponentProps> = ({setShowAuth}) => {
 
   const navigate = useNavigate();
   const [ newAccount, setNewAccount ] = useState<Boolean>(false);
-  const [ authDetails, setAuthDetails ] = useState<AuthUser>({username:"", password:""})
+  const [ authDetails, setAuthDetails ] = useState<AuthUser>({username:"", password:""});
+  const [ message, setMessage ] = useState<string>('');
   
   const handleInput = ({target}: React.ChangeEvent<HTMLInputElement>) => {
     let newUserData = { [target.name] : target.value }
@@ -20,14 +21,13 @@ const Authentication: React.FC<AuthComponentProps> = ({setShowAuth}) => {
       const response = await useAxios.post(`/auth/${newAccount ? 'signup' : 'login'}/`, authDetails);
       window.localStorage.setItem('fast-flip-user', JSON.stringify(response.data))
       navigate('/')
-    } catch (error) {
-      console.log(error)
+    } catch (error:any) {
+      setMessage(error.response?.data?.msg)
     }
   }
 
   const switchAuthenticationType = () => {
     setNewAccount((newAccount) => !newAccount)
-    setAuthDetails({username:"", password:""})
   }
 
   return (
@@ -48,7 +48,7 @@ const Authentication: React.FC<AuthComponentProps> = ({setShowAuth}) => {
                     min={6}
                     className="p-2 my-1 w-full rounded-sm text-blueLagoon focus:outline-none border-b text-base placeholder:text-base"/>
                 </div>
-                <p className="text-red-600 font-medium text-xs">{}</p>
+                <p className="text-red-600 font-medium text-xs">{message}</p>
                 <button 
                 type="button"
                 onClick={handleSubmit} 
