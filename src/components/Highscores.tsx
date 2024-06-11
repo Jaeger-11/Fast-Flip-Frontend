@@ -1,25 +1,27 @@
-// import { useEffect, useState } from "react";
-// import useAxios from "../hooks/useAxios";
-// import { Scores } from "../types/interface";
-import { useNavigate } from "react-router-dom";
-import Highscores from "../components/Highscores";
-const Leaderboard = () => {
-  const navigate = useNavigate()
+import React, {Suspense, useEffect, useState} from 'react';
+import { Scores } from '../types/interface';
+import useAxios from '../hooks/useAxios';
 
+const Highscores:React.FC = () => {
+    const [highScores, setHighScores] = useState<Scores[]>([])
+    const fetchHighScore = async () => {
+        const response = await useAxios('/scores/highscores');
+        const data = await response.data;
+        setHighScores(data.scores)
+    }
+
+    const checkIndex = (index:number) => {
+        if(index !== 1 && index !== 2 && index !== 3){
+        return true
+        } return false
+    }
+
+    useEffect(() => {
+        fetchHighScore()
+    },[])
   return (
-    <div className="container mx-auto p-4 flex items-center justify-center">
-      <section className=" w-[90%] md:w-1/2 ">
-        <div onClick={() => navigate(-1)} className="md:hidden flex w-max cursor-pointer font-semibold items-center justify-center gap-1 top-0 right-[110%]">
-          <svg className="w-6" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13.4092 16.4199L10.3492 13.55C10.1935 13.4059 10.0692 13.2311 9.98425 13.0366C9.89929 12.8422 9.85547 12.6321 9.85547 12.4199C9.85547 12.2077 9.89929 11.9979 9.98425 11.8035C10.0692 11.609 10.1935 11.4342 10.3492 11.29L13.4092 8.41992" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 21.4202H17C19.2091 21.4202 21 19.6293 21 17.4202V7.42017C21 5.21103 19.2091 3.42017 17 3.42017H7C4.79086 3.42017 3 5.21103 3 7.42017V17.4202C3 19.6293 4.79086 21.4202 7 21.4202Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-          <p>Back</p>
-        </div>
-        <h2 className="jersey text-3xl md:text-4xl font-bold mt-4 text-center">Fast Flip Leaderboard</h2>
-        <section className="w-full mx-auto border border-black relative">
-        <div onClick={() => navigate(-1)} className="hidden cursor-pointer font-semibold md:flex absolute w-max items-center justify-center gap-1 top-0 right-[110%]">
-          <svg className="w-6" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M13.4092 16.4199L10.3492 13.55C10.1935 13.4059 10.0692 13.2311 9.98425 13.0366C9.89929 12.8422 9.85547 12.6321 9.85547 12.4199C9.85547 12.2077 9.89929 11.9979 9.98425 11.8035C10.0692 11.609 10.1935 11.4342 10.3492 11.29L13.4092 8.41992" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 21.4202H17C19.2091 21.4202 21 19.6293 21 17.4202V7.42017C21 5.21103 19.2091 3.42017 17 3.42017H7C4.79086 3.42017 3 5.21103 3 7.42017V17.4202C3 19.6293 4.79086 21.4202 7 21.4202Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-          <p>Back</p>
-        </div>
-          {/* {highScores && highScores.map((item,index) => {
+    <Suspense fallback={<div>LOADING</div>} >
+        {highScores.map((item,index) => {
             return (
               <div key={index} className="flex justify-between text-xl">
                 <div className="flex gap-3 flex-1 border border-black">
@@ -34,12 +36,9 @@ const Leaderboard = () => {
                 <p className="p-2 border border-black w-12 text-center font-bold">{item.score}</p>
               </div>
             )
-          })} */}
-          <Highscores/>
-        </section>
-      </section>
-    </div>
+          })}
+    </Suspense>
   )
 }
 
-export default Leaderboard;
+export default Highscores

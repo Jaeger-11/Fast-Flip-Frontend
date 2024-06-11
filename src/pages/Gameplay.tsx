@@ -133,7 +133,6 @@ const Gameplay = () => {
             {cards.map((i, index) => {
                 return (<div key={index} onClick={() => handleCardClick(index)} className={`${i.isFlipped ? 'flipped' : 'bg-blueLagoon'} card flex justify-center relative overflow-hidden items-center text-lightBg`}>
                     <img className={`${i.isFlipped ? 'opacity-100' : 'opacity-0'} transition-all w-[100%] h-[100%] object-center object-cover absolute top-0 left-0`} src={i.imageUrl} alt={i.name} />
-                    {/* <p className={`${i.isFlipped ? 'opacity-100 ' : 'opacity-0'} transition-all font-semibold text-lg`}>{i.name}</p> */}
                 </div>)
             })}
         </section>

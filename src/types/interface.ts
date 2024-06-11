@@ -11,7 +11,6 @@ export interface StatsComponentProps {
 export interface AuthUser {
     username?: string;
     password: string;
-    email: string;
 }
 
 export interface Category {
@@ -33,9 +32,7 @@ export interface User {
 
 export interface Scores {
     username: string;
-    flipsCount?: string;
     score: number;
-    timeTaken?: number
 }
 
 export interface Stats {
