@@ -14,8 +14,8 @@ const Home:React.FC = () => {
     }
 
     const logOut = () => {
-        window.localStorage.clear()
-        navigate('/landing')
+        window.localStorage.clear();
+        navigate('/landing');
     }
 
   return (
@@ -40,7 +40,7 @@ const Home:React.FC = () => {
         </section>
 
         <section className='flex justify-between items-center text-lg font-semibold'>
-            <Link to='/'>View Instructions</Link>
+            <Link to='/about'>View Instructions / About</Link>
             <Link to='/leaderboard'>Leaderboard</Link>
         </section>
 
