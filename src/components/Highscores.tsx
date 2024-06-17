@@ -7,7 +7,7 @@ const Highscores:React.FC = () => {
     const fetchHighScore = async () => {
         const response = await useAxios('/scores/highscores');
         const data = await response.data;
-        setHighScores(data.scores)
+        setHighScores(data.highscores)
     }
 
     const checkIndex = (index:number) => {
